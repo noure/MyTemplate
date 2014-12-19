@@ -9,8 +9,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="navbar-static-top.css" rel="stylesheet">
-<link href="bootstrap.min.css" rel="stylesheet">
+<link href="./avbar-static-top.css" rel="stylesheet">
+<link href="./bootstrap.min.css" rel="stylesheet">
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript"
@@ -57,9 +57,11 @@
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					
-					<li><a href='<spring:url value="/login.html"/>'>Sign in </a></li>
-					<li><a href='<spring:url value="/logout"/>'>Logout</a></li>
+						<li class="${current == 'login' ? 'active' : '' }"><a
+							href='<spring:url value="/login.html"/>'>Loging </a></li>
+					<security:authorize access="isAuthenticated()">
+						<li><a href='<spring:url value="/logout"/>'>Logout </a></li>
+					</security:authorize>
 				</ul>
 
 

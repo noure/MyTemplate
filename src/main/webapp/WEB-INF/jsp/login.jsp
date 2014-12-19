@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
-<%@ include file="../layout/taglib.jsp" %>
+<%@ include file="../layout/taglib.jsp"%>
 
 
 <style>
-
 .form-signin {
 	max-width: 330px;
 	padding: 15px;
@@ -46,10 +45,21 @@
 	border-top-right-radius: 0;
 }
 </style>
+<center>
+	<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
+		<font color="red"> Your login attempt was not successful due to
+			<br />
+		<br /> <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}" />.
+		</font>
+	</c:if>
+</center>
 
-<form class="form-signin" role="form" action="<spring:url value="/j_spring_security_check" />" method="POST">
+<form class="form-signin" role="form"
+	action="<spring:url value="/j_spring_security_check" />" method="POST">
 	<h2 class="form-signin-heading">Please sign in</h2>
-	<input type="text" name="j_username" class="form-control" placeholder="Name" required autofocus> 
-	<input type="password" name="j_password" class="form-control" placeholder="Password" required> 
-	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+	<input type="text" name="j_username" class="form-control"
+		placeholder="Name" required autofocus> <input type="password"
+		name="j_password" class="form-control" placeholder="Password" required>
+	<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
+		in</button>
 </form>
